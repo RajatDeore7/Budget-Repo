@@ -9,7 +9,9 @@ const MyComponent = () => {
     let num2 = Number(value2);
 
     var percentage = (+num2/+num1)*100;
-    percentage = Math.min(percentage, 100); // Cap percentage at 100
+    percentage = 100 -percentage;
+    
+    percentage = Math.min(percentage, 100); 
     percentage = Math.round(percentage); 
     
     console.log(percentage);
@@ -48,7 +50,7 @@ const MyComponent = () => {
                 </div>
                 <p className='exp-name'>Expenses : ${value2}</p>
                 <div className="income">
-                    <div><p className='perc'>{percentage}%</p></div>
+                    <div><p className='perc'>{expense}%</p></div>
                     <div className='outer'>
                         <div className="inco" style={expStyle}></div>
                     </div>
