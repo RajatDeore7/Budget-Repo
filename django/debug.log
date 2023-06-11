@@ -1,0 +1,30 @@
+Not Found: /
+"GET / HTTP/1.1" 404 2262
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2313
+Not Found: /api/v1/
+"GET /api/v1/ HTTP/1.1" 404 2834
+Not Found: /api/v1/budget/
+"GET /api/v1/budget/ HTTP/1.1" 404 8286
+Unauthorized: /api/v1/budget/budgets/
+"GET /api/v1/budget/budgets/ HTTP/1.1" 401 5124
+Not Found: /api/v1/budget/img/grid.png
+"GET /api/v1/budget/img/grid.png HTTP/1.1" 404 8322
+Not Found: /api-auth/img/grid.png
+"GET /api-auth/img/grid.png HTTP/1.1" 404 2592
+Unauthorized: /api/v1/budget/budgets/
+"GET /api/v1/budget/budgets/ HTTP/1.1" 401 5124
+Not Found: /
+"GET / HTTP/1.1" 404 2262
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2313
+Not Found: /
+"GET / HTTP/1.1" 404 2262
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2313
+Not Found: /
+"GET / HTTP/1.1" 404 2262
+Method Not Allowed: /api/v1/auth/login/
+"GET /api/v1/auth/login/ HTTP/1.1" 405 12313
+Bad Request: /api/v1/auth/login/
+"POST /api/v1/auth/login/ HTTP/1.1" 400 12387

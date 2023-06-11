@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  shinesbudgets_budget:
+    container_name: shinesbudgets_budget
+    image: 570284437616.dkr.ecr.ca-central-1.amazonaws.com/shine:react_budget
+    restart: always
+    ports:
+      - 8102:80
+    environment:
+      - ENVIRONMENT=prod
+    volumes:
+      - ./Docker/run.sh:/run.sh
+      - ./Docker/vhost.conf.tpl:/var/www/Docker/vhost.conf.tpl

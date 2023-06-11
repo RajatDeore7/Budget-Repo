@@ -1,0 +1,42 @@
+.progressbar {
+    width: 100%;
+    background-color: #2962ff;
+    border-radius: 4px;
+    margin: 1rem;
+}
+
+.income {
+    padding: 0.3rem;
+}
+
+.expenses {
+    padding: 0.3rem;
+}
+
+.inco-name {
+    color: rgb(255, 255, 255);
+    font: 1.2rem sans-serif;
+    padding-left: 10px;
+    padding-top: 5px;
+    margin: 0;
+}
+
+.exp-name {
+    color: rgb(255, 255, 255);
+    font: 1.2rem sans-serif;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.perc {
+    padding: 0;
+    margin: 0;
+    color: white;
+    text-align: center;
+}
+
+.outer {
+    background-color: rgb(255, 255, 255);
+    height: 17px;
+    border-radius: 20px;
+}

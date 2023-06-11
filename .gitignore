@@ -1,0 +1,5 @@
+/React/node_modules/
+.idea
+
+env
+django/env
