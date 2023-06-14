@@ -8,20 +8,21 @@ const MyComponent = () => {
     let num1 = Number(value1);
     let num2 = Number(value2);
 
-    var percentage = (+num2/+num1)*100;
-    percentage = 100 -percentage;
-    
-    percentage = Math.min(percentage, 100); 
-    percentage = Math.round(percentage); 
+    var percentage = 0;
+    if (num1 !== 0) {
+        percentage = (+num2 / +num1) * 100;
+        percentage = Math.min(percentage, 100); // Cap percentage at 100
+        percentage = Math.round(percentage);
+    }
     
     console.log(percentage);
 
     // process
-    const income = 50;
+    const income = num1 !== 0 ? 100 - percentage : 0;
     const expense = percentage;
 
     const incoStyle = {
-        height: '17px',
+        height: '20px',
         backgroundColor: income > 50 ? 'red' : 'green',
         borderRadius: '20px',
         border: '2px solid black',
@@ -30,7 +31,7 @@ const MyComponent = () => {
     };
     const expStyle = {
         height: '17px',
-        backgroundColor: expense > 50 ? 'red' : 'green',
+        backgroundColor: expense > income ? 'red' : 'green',
         borderRadius: '20px',
         border: '2px solid black',
         width: `${expense}%`,
@@ -41,16 +42,16 @@ const MyComponent = () => {
     return clonedCategory && (
         <div className="row mb-3">
             <div className="progressbar">
-                <p className='inco-name'>Income : ${value1}</p>
+                <p className='inco-name'>Income : ${value1} ({income}%)</p>
                 <div className="income">
-                    <div><p className='perc'>{income}%</p></div>
+                    {/* <div><p className='perc'>{income}%</p></div> */}
                     <div className='outer'>
                         <div className="inco" style={incoStyle}></div>
                     </div>
                 </div>
-                <p className='exp-name'>Expenses : ${value2}</p>
+                <p className='exp-name'>Expenses : ${value2} ({percentage}%)</p>
                 <div className="income">
-                    <div><p className='perc'>{expense}%</p></div>
+                    {/* <div><p className='perc'>{percentage}%</p></div> */}
                     <div className='outer'>
                         <div className="inco" style={expStyle}></div>
                     </div>

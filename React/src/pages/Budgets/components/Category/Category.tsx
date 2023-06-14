@@ -4,6 +4,8 @@ import { BudgetService } from '@/services/Budget.service.ts';
 import _ from 'lodash';
 import ConfirmationDialog from '@/partials/ConfirmationDialog/ConfirmationDialog.tsx';
 
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+
 type CategoryProps = {
     category: any;
     addCategory?: (category: any) => void;
@@ -51,12 +53,6 @@ const Category = ({ category,
 
     const handleEditCategoryButtonClick = () => {
         setCategoryEditing(true);
-    }
-
-    const handleAddCategory = () => {
-        if (addCategory) {
-            addCategory(category);
-        }
     }
 
     const handleSaveCategory = () => {
@@ -353,9 +349,22 @@ const Category = ({ category,
         setClonedCategory(newCategory);
     }
     
-
+    //Progress bar
     localStorage.setItem(clonedCategory.name, clonedCategory.total_monthly);
 
+    const handleAddCategory = (selectedOption: any) => {           
+        if (addCategory) {
+          const newCategory = {
+            ...clonedCategory,
+            name: selectedOption,
+          };          
+          addCategory(newCategory);
+        //   console.log(clonedCategory);          
+        }
+      };
+    //   console.log(clonedCategory.name);
+      
+      
     return clonedCategory && (
         <div className="row mb-3">
             <div className="col-12">
@@ -507,12 +516,45 @@ const Category = ({ category,
                     </table>
                 </div>
                 <div className="table-actions text-right tw-flex tw-justify-end">
-                    {(clonedCategory.c_type === 3 && addCategory) && (
-                        <button className="btn btn-sm btn-success btn-success-dark mr-2 tw-flex tw-items-center"
-                                onClick={handleAddCategory}>
-                            <i className="material-icons mr-1">add_circle_outline</i>
-                            Category
-                        </button>
+                {(clonedCategory.c_type === 3 && addCategory) && (
+                    <DropdownButton
+                        className="btn-success-darkbtn-success-dark mr-2 tw-flex tw-items-center"
+                        title="Category"
+                        id="category-dropdown">
+                        <Dropdown.Item onClick={() => handleAddCategory('Income')}>
+                            Income
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Mortage')}>
+                            Mortage
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Property Tax')}>
+                            Property Tax
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Condo Fee')}>
+                            Condo Fee
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Heating')}>
+                            Heating
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Home Insurance')}>
+                            Home Insurance
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Personal Insurance')}>
+                            Personal Insurance
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Investment')}>
+                            Investment
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Loans')}>
+                            Loans
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Groceries')}>
+                            Groceries
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleAddCategory('Other')}>
+                            Other
+                        </Dropdown.Item>
+                    </DropdownButton>
                     )}
                     {clonedCategory.name !== 'Expense' && (
                         <button className="btn btn-sm btn-success btn-success-dark tw-flex tw-items-center"
