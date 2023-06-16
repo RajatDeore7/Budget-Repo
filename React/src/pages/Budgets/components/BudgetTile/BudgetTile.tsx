@@ -10,7 +10,7 @@ import EditBudgetDialog from '@/pages/Budgets/components/EditBudgetDialog/EditBu
 import { ExportUtil } from '@/utils/Export.util.ts';
 
 import MyComponent from '../ProgressBar/progress';
-
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 type BudgetTileProps = {
     budget: any;
     onAddBudget: (newBudget: any, previousPositionBudgetId: any) => void;
@@ -301,11 +301,46 @@ const BudgetTile = ({budget, onAddBudget, onDeleteBudget}: BudgetTileProps) => {
                                 </tbody>
                             </table>
                             <div className="table-actions text-right">
-                                <button className="btn btn-sm btn-success btn-success-dark mb-3"
-                                        onClick={() => handleAddCategory()}>
-                                    <i className="material-icons mr-1">add_circle_outline</i>
-                                    Category
-                                </button>
+                                <div className="d-flex justify-content-end pb-3">
+                                    <DropdownButton
+                                        className="btn-success-darkbtn-success-dark mr-2 tw-flex tw-items-center"
+                                        title="Category"
+                                        id="category-dropdown">
+                                        <Dropdown.Item onClick={() => handleAddCategory('Income')}>
+                                            Income
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Mortage')}>
+                                            Mortage
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Property Tax')}>
+                                            Property Tax
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Condo Fee')}>
+                                            Condo Fee
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Heating')}>
+                                            Heating
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Home Insurance')}>
+                                            Home Insurance
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Personal Insurance')}>
+                                            Personal Insurance
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Investment')}>
+                                            Investment
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Loans')}>
+                                            Loans
+                                        </Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleAddCategory('Groceries')}>
+                                            Groceries
+                                        </Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleAddCategory('Other')}>
+                                            Other
+                                        </Dropdown.Item>
+                                    </DropdownButton>
+                                </div>
                             </div>
                             {clonedBudget.categories.length > 0 && (
                                 <div>
